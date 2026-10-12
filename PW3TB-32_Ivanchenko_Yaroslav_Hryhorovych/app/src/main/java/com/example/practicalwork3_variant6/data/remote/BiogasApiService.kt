@@ -6,13 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 
-/**
- * Опис REST API мокованого сервера біогазової установки у вигляді інтерфейсу —
- * Retrofit автоматично генерує реалізацію з HTTP-викликами (Заняття №10).
- *
- * Усі методи повертають [Response], а не "сирі" дані напряму, щоб мати доступ
- * до HTTP-коду відповіді (200, 404, 500 тощо) для обробки помилок (Заняття №12).
- */
 interface BiogasApiService {
 
     @GET("readings")

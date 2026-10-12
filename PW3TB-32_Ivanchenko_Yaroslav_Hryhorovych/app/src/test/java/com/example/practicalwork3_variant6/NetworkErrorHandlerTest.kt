@@ -16,13 +16,8 @@ import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-/**
- * Юніт-тести для централізованого обробника мережевих помилок
- * (Заняття №12, середній/просунутий рівні).
- */
 class NetworkErrorHandlerTest {
 
-    // ---------- NetworkErrorHandler.classify / classifyHttpCode ----------
 
     @Test
     fun `classify UnknownHostException as NO_INTERNET`() {
@@ -61,7 +56,6 @@ class NetworkErrorHandlerTest {
         assertEquals(NetworkErrorType.UNKNOWN, NetworkErrorHandler.classifyHttpCode(200))
     }
 
-    // ---------- NetworkErrorType.userMessage ----------
 
     @Test
     fun `userMessage for CLIENT_ERROR 401 mentions authorization`() {
@@ -75,7 +69,6 @@ class NetworkErrorHandlerTest {
         assertTrue(message.contains("503"))
     }
 
-    // ---------- safeApiCall ----------
 
     @Test
     fun `safeApiCall returns Success for successful response with body`() = runBlocking {
@@ -101,7 +94,6 @@ class NetworkErrorHandlerTest {
         assertEquals(null, (result as NetworkResult.Error).code)
     }
 
-    // ---------- safeApiCallWithRetry ----------
 
     @Test
     fun `safeApiCallWithRetry does not retry on 4xx client error`() = runBlocking {

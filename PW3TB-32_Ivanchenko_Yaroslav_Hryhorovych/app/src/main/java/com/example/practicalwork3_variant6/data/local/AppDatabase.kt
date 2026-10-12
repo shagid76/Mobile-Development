@@ -25,9 +25,6 @@ abstract class AppDatabase : RoomDatabase() {
     }
 }
 
-/** Локальне джерело даних (Local Data Source) — тонка обгортка над DAO,
- *  яка ізолює [com.example.practicalwork3_variant6.data.repository.BiogasRepository]
- *  від деталей роботи з Room (Заняття №9). */
 class LocalBiogasDataSource(private val dao: ReactorReadingDao) {
 
     fun observeAll() = dao.getAll()

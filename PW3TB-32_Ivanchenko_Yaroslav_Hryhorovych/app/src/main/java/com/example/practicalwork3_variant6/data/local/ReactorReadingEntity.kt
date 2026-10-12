@@ -4,11 +4,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.practicalwork3_variant6.domain.ReactorState
 
-/**
- * Локальна (Room) сутність показника реактора — Заняття №9.
- * Відповідає за представлення даних у локальній базі даних, незалежно від
- * того, як ці дані отримано (введені вручну чи завантажені з сервера).
- */
 @Entity(tableName = "reactor_reading")
 data class ReactorReadingEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
@@ -17,7 +12,6 @@ data class ReactorReadingEntity(
     val temperature: Int,
     val pressure: Int,
     val timestamp: Long,
-    /** true — запис синхронізовано із сервером; false — лише локальний (офлайн). */
     val isSynced: Boolean = false
 )
 

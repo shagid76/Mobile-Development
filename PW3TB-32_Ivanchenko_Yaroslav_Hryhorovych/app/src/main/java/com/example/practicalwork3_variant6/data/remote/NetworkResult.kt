@@ -1,24 +1,11 @@
 package com.example.practicalwork3_variant6.data.remote
 
-/**
- * Результат мережевого запиту — централізована модель обробки помилок
- * (Заняття №12), яка відокремлює UI від деталей винятків Retrofit/OkHttp.
- *
- * Замість того, щоб composable-функції ловили IOException чи HttpException
- * напряму, ViewModel/Repository перетворюють будь-який результат запиту
- * на один із трьох варіантів нижче, а UI лише реагує на готовий стан.
- */
 sealed class NetworkResult<out T> {
     data class Success<T>(val data: T) : NetworkResult<T>()
     data class Error(val code: Int?, val message: String) : NetworkResult<Nothing>()
     data object Loading : NetworkResult<Nothing>()
 }
 
-/**
- * Типи мережевих помилок, визначені за причиною виникнення — дозволяє
- * показувати користувачу зрозуміле повідомлення замість технічного тексту
- * винятку (Заняття №12, "Короткі теоретичні відомості").
- */
 enum class NetworkErrorType {
     NO_INTERNET,
     TIMEOUT,

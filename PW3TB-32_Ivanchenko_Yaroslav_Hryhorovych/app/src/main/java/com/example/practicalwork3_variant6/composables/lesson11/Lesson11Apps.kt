@@ -20,10 +20,6 @@ import com.example.practicalwork3_variant6.composables.common.ScreenTitle
 import com.example.practicalwork3_variant6.data.remote.NetworkResult
 import com.example.practicalwork3_variant6.viewmodel.AuthViewModel
 
-/**
- * Заняття №11, базовий рівень: форма логіну, мокований токен генерується
- * сервером при успішному вході та зберігається через [AuthViewModel]/DataStore.
- */
 @Composable
 fun Lesson11Basic(viewModel: AuthViewModel = viewModel()) {
     var username by remember { mutableStateOf("") }
@@ -50,11 +46,6 @@ fun Lesson11Basic(viewModel: AuthViewModel = viewModel()) {
     }
 }
 
-/**
- * Заняття №11, середній рівень: токен автоматично підставляється у заголовки
- * (через [com.example.practicalwork3_variant6.data.remote.AuthInterceptor]) при зверненні
- * до захищеного ресурсу GET /secure/status.
- */
 @Composable
 fun Lesson11Medium(viewModel: AuthViewModel = viewModel()) {
     var username by remember { mutableStateOf("") }
@@ -88,11 +79,6 @@ fun Lesson11Medium(viewModel: AuthViewModel = viewModel()) {
     }
 }
 
-/**
- * Заняття №11, просунутий рівень: адаптація UI під роль користувача,
- * закодовану в токені (ADMIN бачить додаткову панель, OPERATOR — ні),
- * а також обробка спроби доступу без токена чи з недійсним токеном.
- */
 @Composable
 fun Lesson11Advanced(viewModel: AuthViewModel = viewModel()) {
     var username by remember { mutableStateOf("") }

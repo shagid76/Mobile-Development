@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
-/** DAO (Data Access Object) для локального джерела даних — Заняття №9. */
 @Dao
 interface ReactorReadingDao {
 

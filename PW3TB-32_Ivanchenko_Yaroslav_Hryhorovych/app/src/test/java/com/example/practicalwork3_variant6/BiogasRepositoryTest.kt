@@ -18,14 +18,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import retrofit2.Response
 
-/**
- * Юніт-тести бізнес-логіки [BiogasRepository] (Заняття №9), що не залежить
- * від мережі чи бази даних — сортування та фільтрація вже завантажених показників.
- *
- * [FakeDao] і [FakeApi] — мінімальні тестові "дублери" (test doubles) потрібні
- * лише для того, щоб створити інстанс Repository: самі тестовані методи
- * (sortByMethaneDescending/filterCritical) не звертаються ні до бази, ні до мережі.
- */
 private class FakeDao : ReactorReadingDao {
     override fun getAll(): Flow<List<ReactorReadingEntity>> = flowOf(emptyList())
     override suspend fun getById(id: Int): ReactorReadingEntity? = null

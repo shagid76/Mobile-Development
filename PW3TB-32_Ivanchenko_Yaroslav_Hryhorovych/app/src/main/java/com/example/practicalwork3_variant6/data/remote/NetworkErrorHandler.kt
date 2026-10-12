@@ -5,14 +5,6 @@ import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-/**
- * Централізований обробник мережевих помилок (Заняття №12, середній/просунутий рівні).
- *
- * Будь-який виклик Retrofit в проєкті проходить через [safeApiCall], що перетворює
- * виняток або неуспішну HTTP-відповідь у [NetworkResult.Error] з готовим,
- * зрозумілим користувачу повідомленням — UI-шар більше не має справи з
- * IOException, HttpException чи кодами відповіді напряму.
- */
 object NetworkErrorHandler {
 
     fun classify(throwable: Throwable): NetworkErrorType = when (throwable) {
@@ -29,11 +21,6 @@ object NetworkErrorHandler {
     }
 }
 
-/**
- * Безпечно виконує мережевий виклик [call] та повертає [NetworkResult],
- * ніколи не кидаючи виняток далі — весь мережевий шар застосунку
- * повинен проходити через цю функцію (Заняття №12).
- */
 suspend fun <T> safeApiCall(call: suspend () -> Response<T>): NetworkResult<T> {
     return try {
         val response = call()
@@ -50,13 +37,6 @@ suspend fun <T> safeApiCall(call: suspend () -> Response<T>): NetworkResult<T> {
     }
 }
 
-/**
- * Варіант [safeApiCall] з повторними спробами (retry) при тимчасових помилках
- * мережі або сервера — просунутий рівень Заняття №12.
- *
- * @param maxAttempts максимальна кількість спроб (включно з першою).
- * @param delayMillis базова затримка між спробами в мілісекундах.
- */
 suspend fun <T> safeApiCallWithRetry(
     maxAttempts: Int = 3,
     delayMillis: Long = 800,
@@ -67,8 +47,6 @@ suspend fun <T> safeApiCallWithRetry(
         val result = safeApiCall(call)
         if (result is NetworkResult.Success) return result
         lastResult = result
-        // Повторюємо лише для тимчасових помилок (5xx, таймаут, відсутність мережі),
-        // а не для помилок клієнта (4xx), які повторна спроба не виправить.
         val isRetryable = result is NetworkResult.Error &&
             (result.code == null || result.code in 500..599)
         if (isRetryable && attempt < maxAttempts - 1) {

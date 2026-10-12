@@ -19,10 +19,6 @@ import com.example.practicalwork3_variant6.composables.common.ScreenTitle
 import com.example.practicalwork3_variant6.data.remote.NetworkResult
 import com.example.practicalwork3_variant6.viewmodel.ForecastViewModel
 
-/**
- * Заняття №12, базовий рівень: перевірка наявності інтернет-з'єднання
- * перед виконанням запиту і показ простого повідомлення про помилку.
- */
 @Composable
 fun Lesson12Basic(viewModel: ForecastViewModel = viewModel()) {
     val isConnected by viewModel.isConnected.collectAsState()
@@ -44,11 +40,6 @@ fun Lesson12Basic(viewModel: ForecastViewModel = viewModel()) {
     }
 }
 
-/**
- * Заняття №12, середній рівень: централізований обробник помилок
- * ([com.example.practicalwork3_variant6.data.remote.safeApiCall]) логує помилки у Logcat
- * і передає готове повідомлення у ViewModel для показу через текстовий блок (аналог Snackbar).
- */
 @Composable
 fun Lesson12Medium(viewModel: ForecastViewModel = viewModel()) {
     val result by viewModel.result.collectAsState()
@@ -66,11 +57,6 @@ fun Lesson12Medium(viewModel: ForecastViewModel = viewModel()) {
     }
 }
 
-/**
- * Заняття №12, просунутий рівень: автоматичні повторні спроби (retry) при
- * тимчасових помилках, різні повідомлення залежно від HTTP-коду, та
- * реєстрація помилок у файл-журнал ([ForecastViewModel]).
- */
 @Composable
 fun Lesson12Advanced(viewModel: ForecastViewModel = viewModel()) {
     val result by viewModel.result.collectAsState()
@@ -98,9 +84,6 @@ fun Lesson12Advanced(viewModel: ForecastViewModel = viewModel()) {
 
 @Composable
 private fun SnackbarLikeMessage(text: String) {
-    // Спрощена імітація Snackbar прямо в розмітці екрана — виокремлена
-    // в окрему функцію, щоб підкреслити, що повідомлення про помилку
-    // формується централізовано, а не в кожному екрані окремо.
     Text(text, color = MaterialErrorColor())
 }
 

@@ -25,11 +25,6 @@ import com.example.practicalwork3_variant6.domain.ProcessStatus
 import com.example.practicalwork3_variant6.domain.label
 import com.example.practicalwork3_variant6.viewmodel.BiogasViewModel
 
-/**
- * Заняття №10, базовий рівень: один REST-виклик (GET /readings через Retrofit),
- * JSON-відповідь автоматично десеріалізується Gson у [com.example.practicalwork3_variant6.data.remote.ReactorReadingDto],
- * результат показано простим списком.
- */
 @Composable
 fun Lesson10Basic(viewModel: BiogasViewModel = viewModel()) {
     val networkState by viewModel.networkState.collectAsState()
@@ -51,10 +46,6 @@ fun Lesson10Basic(viewModel: BiogasViewModel = viewModel()) {
     }
 }
 
-/**
- * Заняття №10, середній рівень: сортування/фільтрація отриманих JSON-даних,
- * "реактивне" оновлення UI через StateFlow + локальне кешування у Room.
- */
 @Composable
 fun Lesson10Medium(viewModel: BiogasViewModel = viewModel()) {
     val localReadings by viewModel.localReadings.collectAsState()
@@ -86,10 +77,6 @@ fun Lesson10Medium(viewModel: BiogasViewModel = viewModel()) {
     }
 }
 
-/**
- * Заняття №10, просунутий рівень: асинхронна робота з повторними спробами,
- * бізнес-логіка (середнє значення), адаптивне відображення карток (аналог RecyclerView).
- */
 @Composable
 fun Lesson10Advanced(viewModel: BiogasViewModel = viewModel()) {
     val networkState by viewModel.networkState.collectAsState()

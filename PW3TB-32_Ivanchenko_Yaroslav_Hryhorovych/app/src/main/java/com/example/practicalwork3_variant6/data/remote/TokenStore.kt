@@ -10,13 +10,6 @@ import kotlinx.coroutines.flow.map
 
 private val Context.tokenDataStore by preferencesDataStore(name = "auth_token_store")
 
-/**
- * Локальне сховище токена автентифікації на базі Jetpack DataStore
- * (сучасна заміна SharedPreferences) — Заняття №11.
- *
- * Зберігає мокований токен і роль користувача між запусками застосунку,
- * а [AuthInterceptor] читає його для автоматичної підстановки у заголовки запитів.
- */
 class TokenStore(private val context: Context) {
 
     private val tokenKey = stringPreferencesKey("auth_token")
@@ -39,6 +32,5 @@ class TokenStore(private val context: Context) {
         }
     }
 
-    /** Синхронне читання поточного токена — використовується у [AuthInterceptor]. */
     suspend fun currentToken(): String? = tokenFlow.first()
 }

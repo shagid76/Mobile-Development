@@ -25,10 +25,6 @@ import com.example.practicalwork3_variant6.data.remote.NetworkResult
 import com.example.practicalwork3_variant6.domain.ReactorState
 import com.example.practicalwork3_variant6.viewmodel.BiogasViewModel
 
-/**
- * Заняття №9, базовий рівень: одне локальне джерело даних (Room) +
- * Repository з базовими методами вставки/отримання. Мережа не задіяна.
- */
 @Composable
 fun Lesson9Basic(viewModel: BiogasViewModel = viewModel()) {
     val readings by viewModel.localReadings.collectAsState()
@@ -57,10 +53,6 @@ fun Lesson9Basic(viewModel: BiogasViewModel = viewModel()) {
     }
 }
 
-/**
- * Заняття №9, середній рівень: Repository об'єднує локальне (Room) і
- * віддалене (REST) джерела — "Завантажити з сервера" синхронізує обидва.
- */
 @Composable
 fun Lesson9Medium(viewModel: BiogasViewModel = viewModel()) {
     val localReadings by viewModel.localReadings.collectAsState()
@@ -91,11 +83,6 @@ fun Lesson9Medium(viewModel: BiogasViewModel = viewModel()) {
     }
 }
 
-/**
- * Заняття №9, просунутий рівень: складна структура Repository з агрегацією
- * (середнє значення метану), сортуванням/фільтрацією та retry-логікою
- * (повторні спроби запиту делеговані репозиторію — дивись [BiogasViewModel.refreshWithRetryAndAggregate]).
- */
 @Composable
 fun Lesson9Advanced(viewModel: BiogasViewModel = viewModel()) {
     val localReadings by viewModel.localReadings.collectAsState()

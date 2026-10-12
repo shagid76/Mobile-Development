@@ -15,10 +15,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-/**
- * Перевикористовуваний заголовок екрана: жирний, великий текст
- * з відступом знизу для візуального розділення з рештою вмісту.
- */
 @Composable
 fun ScreenTitle(title: String) {
     Text(
@@ -29,9 +25,6 @@ fun ScreenTitle(title: String) {
     )
 }
 
-/**
- * Рядок "підпис — значення", що розтягується на всю ширину контейнера.
- */
 @Composable
 fun InfoRow(label: String, value: String, valueColor: Color = Color.Unspecified) {
     Row(
@@ -45,9 +38,6 @@ fun InfoRow(label: String, value: String, valueColor: Color = Color.Unspecified)
     }
 }
 
-/**
- * Кнопка меню на всю ширину — використовується для пунктів головного меню.
- */
 @Composable
 fun MenuButton(text: String, onClick: () -> Unit) {
     Button(
@@ -60,17 +50,6 @@ fun MenuButton(text: String, onClick: () -> Unit) {
     }
 }
 
-/**
- * Текстове поле форми з підписом, підказкою (supportingText) та
- * відображенням помилки валідації (якщо є) — використовується у
- * Практичному занятті №6 для усіх рівнів складності форм.
- *
- * @param label підпис поля.
- * @param value поточне текстове значення.
- * @param onValueChange обробник зміни тексту.
- * @param hint підказка, що показується, поки немає помилки.
- * @param errorMessage повідомлення про помилку валідації (null, якщо все гаразд).
- */
 @Composable
 fun ReactorInputField(
     label: String,
@@ -93,10 +72,6 @@ fun ReactorInputField(
     )
 }
 
-/**
- * Колір статусу процесу відповідно до теми застосунку — використовується
- * у заняттях 7-8 для реактивного кольорового індикатора стану.
- */
 @Composable
 fun statusLabelColor(isCritical: Boolean, isWarning: Boolean): Color = when {
     isCritical -> MaterialTheme.colorScheme.error
