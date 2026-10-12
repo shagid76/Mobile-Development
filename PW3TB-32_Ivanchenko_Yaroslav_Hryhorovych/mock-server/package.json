@@ -1,0 +1,13 @@
+{
+  "name": "biogas-mock-server",
+  "version": "1.0.0",
+  "description": "Мокований REST API для Практичної роботи №3 (варіант 6, біогазова установка)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  }
+}
