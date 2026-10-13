@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Потрібен для показу локальних сповіщень на Android 13+ (Заняття 18) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PracticalWork5Variant6">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PracticalWork5Variant6">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Приймач дій, виконаних прямо з інтерактивного сповіщення (Заняття 18, просунутий рівень) -->
+        <receiver
+            android:name=".composables.lesson18.NotificationActionReceiver"
+            android:exported="false" />
+    </application>
+
+</manifest>
