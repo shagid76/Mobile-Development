@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Заняття 23: фото та документи енергетичних об'єктів -->
+    <files-path name="media" path="media/" />
+    <!-- Заняття 24: згенеровані PDF-звіти -->
+    <files-path name="reports" path="reports/" />
+    <!-- Заняття 22: CSV/JSON файли процесів -->
+    <files-path name="process_data" path="process_data/" />
+    <cache-path name="cache" path="." />
+</paths>
